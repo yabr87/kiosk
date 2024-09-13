@@ -14546,8 +14546,7 @@ img.mfp-img {
 }
 
 .custom-max-h-590 {
-  max-height: 590px;
-  height: 100%;
+  min-height: 590px;
 }
 
 .custom-mx-auto {
@@ -14637,5 +14636,4 @@ input[type='date']::-webkit-calendar-picker-indicator {
   .date-label {
     display: none;
   }
-  
 }
