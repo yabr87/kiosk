@@ -57,9 +57,10 @@
         <div class="container page-container">
           <!-- RD Mailform-->
           <form
-            class="p-4 custom-bg w-100 custom-max-h-590 custom-max-w-600"
+            class="p-4 custom-bg w-100 custom-max-h-590 custom-max-w-600 wow fadeInUp"
             method="post"
-            data-form-certificate
+            data-js-form-certificate
+            data-wow-delay="0.4s"
           >
             <h6 id="certificate-info" class="mb-4 pl-3">
               <span id="certificate-type">Certificate</span>
@@ -221,7 +222,7 @@
       }
 
       //form------------------------------------
-      const form = document.querySelector('[data-form-certificate]');
+      const form = document.querySelector('[data-js-form-certificate]');
       const messageWrapper = document.getElementById('form-output-global');
 
       const loadingIconClass = 'fa fa-circle-o-notch fa-spin';
