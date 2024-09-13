@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html class="wide wow-animation" lang="en">
+  <head>
+    <title>Home</title>
+    <meta name="format-detection" content="telephone=no" />
+    <meta
+      name="viewport"
+      content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta charset="utf-8" />
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+    <!-- Stylesheets-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="//fonts.googleapis.com/css?family=Roboto:100,300,300i,400,700,900"
+    />
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="css/fonts.css" />
+    <link rel="stylesheet" href="css/style.css" id="main-styles-link" />
+    <!--[if lt IE 10]>
+      <div
+        style="
+          background: #212121;
+          padding: 10px 0;
+          box-shadow: 3px 3px 5px 0 rgba(0, 0, 0, 0.3);
+          clear: both;
+          text-align: center;
+          position: relative;
+          z-index: 1;
+        "
+      >
+        <a href="http://windows.microsoft.com/en-US/internet-explorer/"
+          ><img
+            src="images/ie8-panel/warning_bar_0000_us.jpg"
+            border="0"
+            height="42"
+            width="820"
+            alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today."
+        /></a>
+      </div>
+      <script src="js/html5shiv.min.js"></script>
+    <![endif]-->
+  </head>
+  <body class="bg-default">
+    <div class="preloader">
+      <div class="preloader-body">
+        <div class="cssload-container">
+          <div class="cssload-speeding-wheel"></div>
+        </div>
+        <p>Loading...</p>
+      </div>
+    </div>
+    <div class="page page-centerd">
+      <section class="page-section" id="contact">
+        <div class="container page-container">
+          <!-- RD Mailform-->
+          <form
+            class="p-4 custom-bg w-100 custom-max-h-590 custom-max-w-600"
+            method="post"
+            data-form-certificate
+          >
+            <h6 id="certificate-info" class="mb-4 pl-3">
+              <span id="certificate-type">Certificate</span>
+              <span id="nid">NID# 135-37</span>
+            </h6>
+
+            <div class="form-wrap">
+              <input
+                class="bg-default form-input"
+                id="contact-name"
+                type="text"
+                name="name"
+                data-constraints="@Required"
+              />
+              <label class="form-label" for="contact-name">Name</label>
+            </div>
+
+            <div class="form-wrap">
+              <input
+                class="form-input"
+                id="contact-date"
+                type="date"
+                name="date"
+                data-constraints="@Required"
+              />
+            </div>
+
+            <div class="form-wrap">
+              <input
+                class="form-input"
+                id="contact-email"
+                type="email"
+                name="email"
+                data-constraints="@Email @Required"
+              />
+              <label class="form-label" for="contact-email">E-mail</label>
+            </div>
+
+            <div class="form-wrap">
+              <input
+                class="form-input"
+                id="contact-phone"
+                type="tel"
+                name="phone"
+                data-constraints="@PhoneNumber @Required"
+              />
+              <label class="form-label" for="contact-phone">Phone Number</label>
+            </div>
+            <div class="form-wrap">
+              <input
+                class="form-input"
+                id="contact-number"
+                type="number"
+                name="number"
+                min="0"
+                data-constraints="@Numeric @Required"
+              />
+              <label class="form-label" for="contact-number"
+                >Number of Copies</label
+              >
+            </div>
+
+            <div class="bg-default p-3 br-6">
+              <p class="form-text-calculation">
+                <strong>Subtotal:</strong> $<span id="subtotal">0.00</span>
+              </p>
+              <p class="form-text-calculation">
+                <strong>VAT 10%:</strong> $<span id="vat">0.00</span>
+              </p>
+              <p class="form-text-calculation">
+                <strong>Grand Total:</strong> $<span id="grand-total"
+                  >0.00</span
+                >
+              </p>
+            </div>
+
+            <div class="order-btn-wrap">
+              <a class="orer-btn-back" href="./request.html"
+                ><svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="lucide lucide-undo-2"
+                >
+                  <path d="M9 14 4 9l5-5" />
+                  <path
+                    d="M4 9h10.5a5.5 5.5 0 0 1 5.5 5.5a5.5 5.5 0 0 1-5.5 5.5H11"
+                  />
+                </svg>
+                <div>Back</div></a
+              >
+              <button class="button button-primary order-btn" type="submit">
+                Payment
+              </button>
+              <div style="width: 48px"></div>
+            </div>
+          </form>
+        </div>
+      </section>
+    </div>
+    <!-- Global Mailform Output-->
+    <div class="snackbars" id="form-output-global"></div>
+    <!-- Javascript-->
+    <script src="js/core.min.js"></script>
+    <script src="js/script.js"></script>
+
+    <script>
+      // Функція для отримання параметрів з URL
+      function getQueryParam(param) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(param);
+      }
+
+      const certificateType = getQueryParam('certificate');
+
+      const certificateNames = {
+        birth: 'Birth Certificate',
+        death: 'Death Certificate',
+        marriage: 'Marriage Certificate',
+        police: 'Police Character Reference',
+      };
+
+      if (certificateType && certificateNames[certificateType]) {
+        document.getElementById(
+          'certificate-type'
+        ).textContent = `${certificateNames[certificateType]}`;
+      } else {
+        window.location.href = './index.html';
+      }
+
+      const pricePerCopy = 10;
+
+      const contactNumberInput = document.getElementById('contact-number');
+
+      if (contactNumberInput) {
+        contactNumberInput.addEventListener('input', function (e) {
+          const numberOfCopies = parseInt(this.value) || 0;
+
+          const subtotal = numberOfCopies * pricePerCopy;
+
+          const vat = subtotal * 0.1;
+
+          const grandTotal = subtotal + vat;
+
+          document.getElementById('subtotal').textContent = subtotal.toFixed(2);
+          document.getElementById('vat').textContent = vat.toFixed(2);
+          document.getElementById('grand-total').textContent =
+            grandTotal.toFixed(2);
+        });
+      }
+
+      //form------------------------------------
+      const form = document.querySelector('[data-form-certificate]');
+      const messageWrapper = document.getElementById('form-output-global');
+
+      const loadingIconClass = 'fa fa-circle-o-notch fa-spin';
+      const successIconClass = 'mdi mdi-check';
+      const errorIconClass = 'mdi mdi-alert-outline';
+
+      form.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        // Перевіряємо валідність полів за допомогою regula
+        const validationErrors = regula.validate();
+
+        // Якщо є помилки, не відправляємо форму і показуємо повідомлення про помилки
+        if (validationErrors.length > 0) {
+          showValidationErrors(validationErrors);
+          return; // Не відправляємо форму
+        }
+
+        // Якщо перевірка пройшла успішно, готуємо FormData
+        const formData = new FormData(form);
+
+        // Надсилаємо дані
+        sendData(formData);
+      });
+
+      async function sendData(formData) {
+        // Спочатку очищаємо вміст messageWrapper і додаємо клас 'active' для видимості
+        updateMessage('Sending', loadingIconClass);
+        messageWrapper.classList.add('active');
+
+        try {
+          // Логування форми
+          let queryParams = new URLSearchParams();
+          for (let [key, value] of formData.entries()) {
+            queryParams.append(key, value);
+          }
+
+          // Якщо все ок, показуємо успішне повідомлення
+          form.reset();
+          updateMessage('Success', successIconClass);
+          setTimeout(() => {
+            messageWrapper.classList.remove('active');
+            window.location.href = `./success.html?${queryParams.toString()}`;
+          }, 1000); //
+        } catch (error) {
+          console.error('Error:', error);
+
+          // У разі помилки показуємо помилку
+          updateMessage('Error', errorIconClass);
+          setTimeout(() => {
+            messageWrapper.classList.remove('active');
+          }, 3000); // Видаляємо клас 'active' через 3 секунди після помилки
+        }
+      }
+
+      function updateMessage(messageText, iconClass) {
+        // Спочатку очищаємо вміст messageWrapper
+        messageWrapper.innerHTML = '';
+
+        // Додаємо HTML для повідомлення
+        messageWrapper.innerHTML = `
+    <p>
+      <span class="icon text-middle icon-xxs ${iconClass}"></span>
+      <span>${messageText}</span>
+    </p>
+  `;
+      }
+
+      function showValidationErrors(errors) {
+        // Очищуємо повідомлення
+        messageWrapper.innerHTML = '';
+        messageWrapper.classList.add('active');
+
+        // Створюємо повідомлення про помилки
+        let errorMessage =
+          '<p><span class="icon text-middle icon-xxs ' +
+          errorIconClass +
+          '"></span> <span>Form contains errors:</span></p><ul>';
+
+        errors.forEach(function (error) {
+          errorMessage += `<li>${error.message}</li>`;
+        });
+
+        errorMessage += '</ul>';
+
+        // Додаємо повідомлення про помилки
+        messageWrapper.innerHTML = errorMessage;
+
+        // Автоматично видаляємо повідомлення через 3 секунди
+        setTimeout(() => {
+          messageWrapper.classList.remove('active');
+        }, 5000);
+      }
+    </script>
+  </body>
+</html>
