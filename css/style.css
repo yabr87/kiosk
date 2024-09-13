@@ -14632,3 +14632,10 @@ img.mfp-img {
 input[type='date']::-webkit-calendar-picker-indicator {
   cursor: pointer;
 }
+
+@media (hover: hover) {
+  .date-label {
+    display: none;
+  }
+  
+}
